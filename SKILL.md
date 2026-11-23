@@ -111,7 +111,7 @@ python scripts/run_skill.py --case /input/case.json --out /app/output/result.jso
 - [ ] 每处改动都有原文、改文与理由；回退项单独记录。
 - [ ] 未整段重写、未新增论断。
 
-## Cycle 02 执行保证与评分对齐
+## 执行保证与评分对齐
 
 调用顺序（固定）：
 
