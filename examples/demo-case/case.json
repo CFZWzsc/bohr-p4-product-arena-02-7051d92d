@@ -1,0 +1,18 @@
+{
+  "case_id": "demo-polish-001",
+  "target_style": "journal article",
+  "text": "In order to assess the effect, a total of 120 participants were randomized. The therapy  may reduce symptoms (p = 0.02) [12].\n\nPrior to analysis, FEV-1 was measured in all subjects. FEV1 was recorded at baseline and week 12. The assay was utilized to quantify interleukin-6 (IL-6), and IL-6 was compared between groups.",
+  "terminology": {
+    "FEV1": ["FEV-1"],
+    "IL-6": ["IL6"]
+  },
+  "output_contract": {
+    "polished_text": "the polished manuscript text",
+    "changes": "array of accepted edits with sentence locators",
+    "rejected_changes": "array of edits rejected by meaning guards",
+    "terminology": "array of canonical terms and variants",
+    "abbreviations": "array of detected abbreviations and definitions",
+    "evidence": "array of sentence-level fact and source protection records",
+    "status": "one of success/partial/insufficient_input/failed"
+  }
+}
