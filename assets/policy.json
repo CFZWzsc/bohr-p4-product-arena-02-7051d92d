@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "rule_set_version": "2.0.0",
+  "principle": "minimal deterministic edits; never change numbers, units, citations or hedging strength",
+  "guards": {
+    "numbers_and_units": "multiset comparison before/after",
+    "citations": "numeric [12], author-year [Smith 2020], (Smith, 2020)",
+    "hedging": "may/might/could/should/can/approximately/not/no/suggest/indicate/correlate and Chinese hedges"
+  },
+  "status": {
+    "success": "polished text produced; no rejected edit, terminology drift or terminology conflict",
+    "partial": "polished text produced but some edit was rejected or terminology drift/conflict remains",
+    "insufficient_input": "no text of at least 20 characters was found",
+    "failed": "case.json missing or invalid"
+  },
+  "discipline": {
+    "edit_scope": "surface minimal edits and declared terminology only",
+    "paragraph_structure": "preserved (blank lines and line breaks)",
+    "source_mutation": "none",
+    "rejected_edits": "recorded with reason, never silently dropped",
+    "style_rewriting": "not attempted when target_style is unspecified"
+  }
+}
