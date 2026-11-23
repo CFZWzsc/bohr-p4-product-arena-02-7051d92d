@@ -3,33 +3,44 @@
 Bohrium Playground Period 4 submission — challenge `product-arena-02-7051d92d` (track: `academic-writing`).
 
 This repository holds the complete skill package for the challenge: the skill
-definition, its executable entry point and all supporting scripts. No precomputed
+definition, its executable pipeline and all supporting documents. No precomputed
 answers, private data or credentials are included.
 
 ## Skill
 
 - Name: `academic-language-polisher`
-- Summary: Polish academic English or Chinese prose with minimal, sentence-level edits while locking numbers, units, citation markers and hedging strength so the author's claims are never strengthened or weakened. Use when a task asks for grammar/terminology/tone polishing with a per-edit rationale and term consistency.
+- Summary: Use when a case supplies an academic manuscript and asks for language polishing or terminology consistency; performs deterministic minimal edits with guards that preserve numbers, units, citations and hedging, then writes a contract-complete /app/output/result.json plus polished.md.
 
 ## Contents
 
 | File |
 |------|
 | `SKILL.md` |
+| `assets/policy.json` |
+| `examples/demo-case/case.json` |
+| `examples/demo-case/manuscript.md` |
+| `examples/quickstart.md` |
+| `references/evidence-discipline.md` |
+| `references/method.md` |
+| `references/task-spec.md` |
 | `scripts/run_skill.py` |
+| `scripts/sk_entry.py` |
 | `README.md` |
 
 ## How to run
 
 ```bash
-python scripts/run_skill.py --case /input/case.json --output /app/output/result.json
+python scripts/sk_entry.py --input /input --work /app/work --out /app/output
 ```
 
-The entry point is `SKILL.md`; input/output contracts, error handling and a minimal
-usage example are documented there.
+A single deterministic pass reads `/input`, computes the deliverable and writes a
+contract-complete `/app/output/result.json` plus the human-readable review files
+described in `SKILL.md`. The same input always produces byte-identical output; no
+network access is used, and fields the materials cannot support are reported
+explicitly instead of being left empty.
 
 ## Notes
 
 - Pure Python standard library; no network access required.
-- The result JSON keeps the input case id, the main results, per-item evidence,
-  a run status and an uncertainty section.
+- Every claim is anchored to paragraph-level evidence; unknown items are reported
+  in `uncertainty` instead of being fabricated.
