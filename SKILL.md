@@ -3,6 +3,15 @@ name: academic-language-polisher
 description: Use when a case supplies an academic manuscript and asks for language polishing or terminology consistency; performs deterministic minimal edits with guards that preserve numbers, units, citations and hedging, then writes a contract-complete /app/output/result.json plus polished.md.
 ---
 
+## 执行纪律（硬性，优先于下文流程）
+
+1. 先落盘骨架：读到 `/input/case.json` 后立即写 `/app/output/result.json` 骨架 —— `case_id` 取自输入，`output_contract` 的每个键都要在，未完成的填 `unknown` 或空容器，**绝不省略键**。
+2. 字段一个不缺：交付前逐键核对 `output_contract`；缺数据时保留键并在 `uncertainty` 写明原因，不编造数字、日期、引用。
+3. 广度优先：先让所有要求的产物以最小合格版本存在，再加深高价值部分。
+4. 预算保护：脚本一次执行即完成全部判断与产出，不依赖第二个回合；接近预算时用现有中间结果收尾。
+5. 写盘前自检：JSON 可解析、契约键不缺、`case_id` 与输入一致、`status` 如实。
+6. 失败也交付：异常路径仍写出 `result.json`（如实标注中断位置与已完成部分），进程退出码为 0。
+
 # 学术语言润色（最小编辑 / 术语统一 / 事实与引用护栏）
 
 ## 用途
