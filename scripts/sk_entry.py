@@ -820,6 +820,12 @@ def build_payload(case, case_file, input_dir, errors, skipped):
         "changes": changes,
         "rejected_changes": reported_rejections,
         "evidence": evidence,
+        # 契约里 terminology / abbreviations 是独立字段：把 result 内已算好的真实表
+        # 提升到顶层，避免被当成"没有生产者"而写成 cannot_determine。
+        "terminology": result["terminology"],
+        "terminology_drift": result["terminology_drift"],
+        "abbreviations": result["abbreviations"],
+        "style_profile": style,
         "uncertainty": uncertainty,
         "errors": errors,
         "skipped": skipped,
